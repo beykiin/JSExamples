@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Örnek Tekrar</title>
+    <style>
+        .img{
+            width: 60%;
+            height: 400px;
+            margin: 50px auto;
+            border: 7px solid black;
+        }
+        img{
+            height: 100%;
+            width: 100%;
+        }
+        .button{text-align: center;}
+
+        
+    </style>
+</head>
+<body>
+    <div class="img">
+        <img id="img" src="img/Resim1.jpg" alt="">
+    </div>
+    <div class="button"> 
+        <button id="next">Next</button>
+        <button id="back">Back</button>
+        <button id="random">Random</button>
+    </div>
+
+    <script>
+        let img=document.getElementById("img")
+        let next=document.getElementById("next")
+        let back=document.getElementById("back")
+        let random=document.getElementById("random")
+        let resimler=["Resim1.jpg","Resim2.jpg","Resim3.jpg","Resim4.jpg"]
+        let count=0
+        random.onclick=function(){
+            let index=Math.floor(Math.random()*resimler.length)
+            img.src=`img/${resimler[index]}`
+            count=index
+        }
+
+        next.onclick=function(){
+            count ++
+            if (count<resimler.length){
+                img.src=`img/${resimler[count]}`
+            }
+            else{
+                count=0
+                img.src=`img/${resimler[count]}`
+            }
+        }
+        back.onclick=function(){
+            count--
+            if (count>=0){
+                img.src=`img/${resimler[count]}`
+            }
+            else{
+                count=resimler.length-1
+                img.src`img/${resimler[count]}`
+            }
+        }
+
+    </script>
+</body>
+</html>
